@@ -5,7 +5,7 @@ CREATE TABLE movies(
   run_time text,
   Director text,
   Leading_actor text,
-  release_date text,
+  release_date text
 );
 
 
