@@ -1,0 +1,83 @@
+<html>
+<head>
+  <title>Input Page</title>
+  <link href="{{ url_for('static', filename='css/bootstrap.min.css') }}"
+  rel="stylesheet" />
+
+  <style>
+    body{
+    padding-top: 50px;
+    }
+    h1{
+    text-align: center;
+    }
+
+  </style>
+
+  </head>
+
+  <body>
+
+  <nav class="navbar navbar-inverse-fixed-top">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed"
+      data-toggle="collapse" data-target="#navbar" aria-expanded="false"
+      aria-controls="navbar">
+      <span class="sr-only">Toggle navigation</span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+
+      </button>
+      <a class="navbar-brand" href="#">Online Catalogue</a>
+      </div>
+      <div id="navbar" class="collapse navbar-collapse">
+      <ul class="nav navbar-nav">
+        <li class="active"><a href="/">Home</a></li>
+        <li><a href="display">Display</a></li>
+        <li><a href="input">Input</a></li>
+      </ul>
+      </div>
+    </div>
+  </nav>
+
+    <div class="container">
+      
+      <h1>Input Page</h1>
+      <p> this is the input page, Here you can input data into the database
+      using the input forms displayed below, all text boxes  must be filled.</p>
+      
+      <form action="{{ url_for('addrec') }}" method="POST" name="form">
+        <label for="title">Title:</lable>
+        <input type="text" name="title" id="title"/>
+        <br>
+        <br>
+        <label for="runtime">Run time:</label>
+        <input type="text" name="runtime" id="runtime"/>
+        <br>
+        <br>
+        <label for="director">Director:</label>
+        <input type="text" name"director" id="director"/>
+        <br>
+        <br>
+        <label for="leadingactor">Leading actor:</label>
+        <input type="text" name="leadingactor" id="leadingactor"/>
+        <br>
+        <br>
+        <label for="releasedate">Release date:</label>
+        <input type="text" name="releasedate" id="releasedate"/>
+        <br>
+        <br>
+        <input type="submit" name="submit" id="submit"/>
+      </form>
+      
+      </div>
+
+      <script
+      src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+      <script src={{ url_for('static', filename='js/bootstrap.min.js')}}">
+      </script>
+
+  </body>
+  </html>

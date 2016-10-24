@@ -11,6 +11,10 @@ db_location = 'var/movies.db'
 def root():
   return render_template('homePage.html'), 200
 
+@app.errorhandler(404)
+def page_not_found(error):
+  return "This web route does not excist.", 404
+
 def get_db():
   db = getattr(g, 'db', None)
   if db is None:
@@ -33,17 +37,19 @@ def init_db():
         db.cursor().executescript(f.read())
       db.commit()
 
-@app.route('/display', methods=['GET', 'POST'])
+@app.route('/display', methods=['POST', 'GET'])
 def display():
 
-   db = get_db()
-   cursor = db.execute('SELECt *  FROM movies')
-   movies = [dict(title=row[0],
+        db = get_db()
+
+        cursor = db.execute('SELECT *  FROM movies')
+        movies = [dict(title=row[0],
                   run_time=row[1],
                   Director=row[2],
                   Leading_actor=row[3],
                   release_date=row[4]) for row in cursor.fetchall()]
-   return render_template('displayPage.html', movies=movies), 200
+
+        return render_template('displayPage.html', movies=movies), 200
 
 
 if __name__=='__main__':
