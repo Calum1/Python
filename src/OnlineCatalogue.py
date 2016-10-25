@@ -11,6 +11,10 @@ db_location = 'var/movies.db'
 def root():
   return render_template('homePage.html'), 200
 
+@app.route('/home')
+def reroot():
+  return redirect('/'), 200
+
 @app.errorhandler(404)
 def page_not_found(error):
   return "This web route does not excist.", 404
